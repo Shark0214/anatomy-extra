@@ -1,38 +1,25 @@
 :root {
-  --vtd-bg: #F8FAFC;
-  --vtd-card: #FFFFFF;
-
-  --vtd-brain-fill: #E2E8F0;
-  --vtd-brain-soft: #F1F5F9;
-  --vtd-brain-stroke: #94A3B8;
-  --vtd-sulcus: #94A3B8;
-
-  --vtd-text: #0F172A;
-  --vtd-muted-text: #64748B;
-  --vtd-muted: var(--vtd-muted-text);
-
-  --vtd-aca: #D9480F;
-  --vtd-mca: #2563EB;
-  --vtd-pca: #7C3AED;
-  --vtd-basilar: #0F766E;
-
-  --vtd-context-vessel: #94A3B8;
-  --vtd-context-vessel-soft: #CBD5E1;
-
-  --vtd-occlusion: #DC2626;
-  --vtd-occlusion-soft: #FEE2E2;
-
-  --vtd-focus: #F59E0B;
-
-  --vtd-inactive-opacity: 0.22;
-  --vtd-context-opacity: 0.56;
-
+  --vtd-bg: #f8fafc;
+  --vtd-card: #ffffff;
+  --vtd-brain-fill: #e2e8f0;
+  --vtd-brain-soft: #f1f5f9;
+  --vtd-brain-stroke: #94a3b8;
+  --vtd-text: #0f172a;
+  --vtd-muted: #64748b;
+  --vtd-aca: #d9480f;
+  --vtd-mca: #2563eb;
+  --vtd-pca: #7c3aed;
+  --vtd-basilar: #0f766e;
+  --vtd-occlusion: #dc2626;
+  --vtd-focus: #f59e0b;
+  --vtd-inactive-opacity: 0.24;
   color: var(--vtd-text);
   background: #eaf1f8;
   font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
 }
+
 * {
   box-sizing: border-box;
 }
@@ -253,13 +240,12 @@ p {
   width: 100%;
   height: auto;
   font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  background: var(--vtd-bg);
 }
 
 .vtd-label {
   font-size: 18px;
-  font-weight: 750;
-  fill: var(--vtd-text);
+  font-weight: 700;
+  fill: #0f172a;
   paint-order: stroke;
   stroke: #ffffff;
   stroke-width: 5px;
@@ -268,28 +254,17 @@ p {
 
 .vtd-small-label {
   font-size: 14px;
-  font-weight: 650;
+  font-weight: 600;
   fill: #334155;
   paint-order: stroke;
   stroke: #ffffff;
   stroke-width: 4px;
-  stroke-linejoin: round;
-}
-
-.vtd-context-label {
-  font-size: 12px;
-  font-weight: 600;
-  fill: var(--vtd-muted-text);
-  paint-order: stroke;
-  stroke: #ffffff;
-  stroke-width: 3px;
-  stroke-linejoin: round;
 }
 
 .vtd-microcopy {
   font-size: 12px;
   font-weight: 500;
-  fill: var(--vtd-muted-text);
+  fill: #64748b;
 }
 
 .vtd-vessel {
@@ -297,43 +272,17 @@ p {
   stroke-linecap: round;
   stroke-linejoin: round;
   vector-effect: non-scaling-stroke;
-  transition:
-    stroke-width 140ms ease,
-    opacity 140ms ease,
-    filter 140ms ease;
-}
-
-.vtd-context-vessel {
-  fill: none;
-  stroke: var(--vtd-context-vessel);
-  stroke-width: 5;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  opacity: var(--vtd-context-opacity);
-  vector-effect: non-scaling-stroke;
-  pointer-events: none;
-}
-
-.vtd-context-vessel-thin {
-  fill: none;
-  stroke: var(--vtd-context-vessel-soft);
-  stroke-width: 3.5;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  opacity: 0.72;
-  vector-effect: non-scaling-stroke;
-  pointer-events: none;
+  transition: stroke-width 140ms ease, opacity 140ms ease, filter 140ms ease;
 }
 
 .vtd-hit-path {
   fill: none;
   stroke: transparent;
-  stroke-width: 36;
+  stroke-width: 34;
   stroke-linecap: round;
   stroke-linejoin: round;
   pointer-events: stroke;
   cursor: pointer;
-  vector-effect: non-scaling-stroke;
 }
 
 .vtd-hit-fill {
@@ -346,23 +295,16 @@ p {
   stroke-width: 4;
   vector-effect: non-scaling-stroke;
   cursor: pointer;
-  transition:
-    opacity 140ms ease,
-    stroke-width 140ms ease,
-    filter 140ms ease;
+  transition: opacity 140ms ease, stroke-width 140ms ease, filter 140ms ease;
 }
 
 .vtd-clickable-label {
   cursor: pointer;
 }
 
-.vtd-context {
-  pointer-events: none;
-}
-
 .vtd-focus-ring:focus-visible,
 .vtd-territory:focus-visible {
-  outline: 3px solid var(--vtd-focus);
+  outline: 3px solid #f59e0b;
   outline-offset: 4px;
 }
 
@@ -374,12 +316,17 @@ p {
   opacity: 0.18;
 }
 
+.is-selected.vtd-vessel {
+  stroke-width: 17;
+}
+
 .is-hovered.vtd-vessel {
   stroke-width: 15;
 }
 
-.is-selected.vtd-vessel {
-  stroke-width: 18;
+.is-selected.vtd-territory {
+  opacity: 0.96;
+  stroke-width: 7;
 }
 
 .is-hovered.vtd-territory {
@@ -387,17 +334,10 @@ p {
   stroke-width: 6;
 }
 
-.is-selected.vtd-territory {
-  opacity: 0.98;
-  stroke-width: 7;
-}
-
-.is-hovered.vtd-label,
-.is-selected.vtd-label,
-.is-hovered.vtd-small-label,
-.is-selected.vtd-small-label,
 .is-hovered .vtd-label,
-.is-selected .vtd-label {
+.is-selected .vtd-label,
+.vtd-label.is-hovered,
+.vtd-label.is-selected {
   font-weight: 800;
 }
 
@@ -422,16 +362,12 @@ p {
 }
 
 .is-occlusion-default {
-  opacity: 0.76;
+  opacity: 0.72;
 }
 
 .is-occlusion-selected {
   opacity: 1;
   filter: drop-shadow(0 0 9px rgba(220, 38, 38, 0.55));
-}
-
-.is-occlusion-inactive {
-  opacity: 0.2;
 }
 
 @media (max-width: 1180px) {

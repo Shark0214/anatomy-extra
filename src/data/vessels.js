@@ -4,27 +4,25 @@ export const VESSEL_META = {
   ACA: {
     label: "ACA",
     color: "#D9480F",
-    shortDeficit: "medial leg area",
-    summary:
-      "ACA: mostly medial and superior cortex; high-yield deficit association is medial leg area.",
+    shortDeficit: "leg area",
+    summary: "medial/superior cortical territory; leg area",
     ariaLabel:
-      "Anterior cerebral artery. Medial and superior cortical territory. Classic deficit association: medial leg area.",
+      "Anterior cerebral artery. Medial and superior cortical territory. Classic deficit association: leg area.",
   },
   MCA: {
     label: "MCA",
     color: "#2563EB",
-    shortDeficit: "lateral face/arm + language/attention",
+    shortDeficit: "face/arm + language/attention",
     summary:
-      "MCA: large lateral territory; face and arm plus language on dominant side or attention on nondominant side.",
+      "large lateral cortical territory; face/arm plus language or attention depending on side",
     ariaLabel:
-      "Middle cerebral artery. Large lateral cortical territory. Classic deficit association: lateral face and arm plus language or attention depending on side.",
+      "Middle cerebral artery. Large lateral cortical territory. Classic deficit association: face and arm plus language or attention depending on side.",
   },
   PCA: {
     label: "PCA",
     color: "#7C3AED",
-    shortDeficit: "occipital vision",
-    summary:
-      "PCA: posterior occipital territory; high-yield deficit association is vision.",
+    shortDeficit: "vision",
+    summary: "posterior occipital visual territory; vision",
     ariaLabel:
       "Posterior cerebral artery. Posterior occipital visual territory. Classic deficit association: vision.",
   },
@@ -33,26 +31,17 @@ export const VESSEL_META = {
     color: "#0F766E",
     shortDeficit: "pons/brainstem; locked-in concept",
     summary:
-      "Basilar: pons and brainstem association; basilar occlusion can be associated with the locked-in syndrome concept.",
+      "midline posterior circulation artery; pons/brainstem and locked-in syndrome concept",
     ariaLabel:
-      "Basilar artery. Midline posterior circulation artery on the anterior pons. Basilar occlusion can injure the pons and is associated with the locked-in syndrome concept.",
+      "Basilar artery. Midline posterior circulation artery associated with pons and brainstem deficits. Basilar occlusion can be associated with the locked-in syndrome concept.",
   },
 };
 
 export function getVesselState(vessel, selectedVessel, hoverVessel) {
   if (selectedVessel === vessel) return "selected";
-  if (selectedVessel && selectedVessel !== vessel) return "inactive";
   if (!selectedVessel && hoverVessel === vessel) return "hovered";
+  if (selectedVessel && selectedVessel !== vessel) return "inactive";
   return "default";
-}
-
-export function getStateClass(vessel, selectedVessel, hoverVessel) {
-  const state = getVesselState(vessel, selectedVessel, hoverVessel);
-
-  if (state === "selected") return "is-selected";
-  if (state === "hovered") return "is-hovered";
-  if (state === "inactive") return "is-inactive";
-  return "";
 }
 
 export const stateClass = {
